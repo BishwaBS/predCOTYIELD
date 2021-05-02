@@ -5,7 +5,7 @@ import pickle
 import sklearn
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
-from sklearn.svm import classes
+
 # from flask_caching import Cache
 # config = {
 #     "DEBUG": True,          # some Flask specific configs
