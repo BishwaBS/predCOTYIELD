@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.left {
+  height: 300%;
+  width: 70%;
+  left:75px;
+  top:50px;
+  position: absolute;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.right {
+  height: 50%;
+  width: 50%;
+  left:800px;
+  top:400px;
+  position: fixed;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+<!--.left {-->
+  <!--left: 0;-->
+  <!--background-color: rgb(36, 0, 95);-->
+<!--}-->
+<!--.right {-->
+  <!--right: 0;-->
+  <!--background-color: rgb(56, 1, 44);-->
+<!--}-->
+</style>
+</head>
+
+<body>
+ <div class="login">
+     <h1>Predict Cotton Yield</h1>
+     <div class="left" >
+
+
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="clay" placeholder="Clay %" required="required" />
+        <input type="text" name="silt" placeholder="Silt %" required="required" />
+		<input type="text" name="ph" placeholder="pH" required="required" />
+        <input type="text" name="Apr_Tavg" placeholder="Apr_Tavg (C)" required="required" />
+        <input type="text" name="May_Tavg" placeholder="May_Tavg (C)" required="required" />
+        <input type="text" name="Jun_Tavg" placeholder="Jun_Tavg (C)" required="required" />
+        <input type="text" name="Apr_totl" placeholder="Apr_Rainfall_Totl (mm)" required="required" />
+        <input type="text" name="May_totl" placeholder="May_Rainfall_Totl (mm)" required="required" />
+        <input type="text" name="Jun_totl" placeholder="Jun_Rainfall_Totl (mm)" required="required" />
+        <input type="text" name="Fert1" placeholder="Fert_First_App (lb)" required="required" />
+        <input type="text" name="Fert2" placeholder="Fert_Second_App (lb)" required="required" />
+        <input type="text" name="Fert1_DAP" placeholder="Fert_First_DAP" required="required" />
+        <input type="text" name="Fert2_DAP" placeholder="Fert_Second_DAP" required="required" />
+        <input type="text" name="Irri1" placeholder="Irri_First_App (mm)" required="required" />
+        <input type="text" name="Irri2" placeholder="Irri_Second_App (mm)" required="required" />
+        <input type="text" name="Irri1_DAP" placeholder="Irri_First_DAP" required="required" />
+        <input type="text" name="Irri2_DAP" placeholder="Irri_Second_DAP" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+         <!--{{ prediction_text }}-->
+
+    <br>
+    <br>
+    </div>
+
+    <div class="right">
+    <br>
+    <br>
+        <h1 style="font-size:2vw;color:white">{{prediction_text}}</h1>
+
+     <!--{{ prediction_text }}-->
+
+
+
+     <h1 style="font-size:3vw; color:green">{{prediction_val}}</h1>
+
+    </div>
+ </div>
+
+
+</body>
+</html>
