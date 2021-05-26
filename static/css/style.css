@@ -30,6 +30,24 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
 
 }
+
+
+ol
+{
+    margin:0px;
+    padding-left:20px;
+}
+
+ol li
+{
+    margin: 0px;
+    padding: 10px;
+    text-indent: -0.5em;
+    text-align: left;
+    margin-left: 1em;
+}
+
+
 .login {
 	position: absolute;
 	top: 20%;
@@ -63,18 +81,3 @@ input {
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
 
 
-
-ol
-{
-    margin:0px;
-    padding-left:20px;
-}
-
-ol li
-{
-    margin: 0px;
-    padding: 10px;
-    text-indent: -0.5em;
-    text-align: left;
-    margin-left: 1em;
-}
