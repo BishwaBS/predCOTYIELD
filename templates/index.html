@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Yield Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+
+.left{
+  height: 300%;
+  width: 100%;
+  left:-500px;
+  top:100px;
+  position: absolute;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.middle {
+  height: 300%;
+  width: 70%;
+  left:75px;
+  top:50px;
+  position: absolute;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.right {
+  height: 50%;
+  width: 50%;
+  left:950px;
+  top:350px;
+  position: fixed;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+ol
+{
+    margin:0px;
+    padding-left:20px;
+}
+
+ol li
+{
+    margin: 0px;
+    padding: 10px;
+    text-indent: -0.5em;
+    text-align: left;
+    margin-left: 1em;
+}
+
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+</style>
+</head>
+
+
+
+
+<body>
+
+
+
+
+ <div class="login">
+
+
+
+
+     <div class="left" >
+         <h1>Important points!</h1>
+         <ol>
+             <li>The value should be provided in the unit specified <a href="https://drive.google.com/file/d/18tR1Ba1KWSLVyGvFuqNjULerdBfTBH5p/view?usp=sharing" target="_blank">Click here for more details </a></td> </li>
+             <li>Currently, the app supports only two fertilizer applications and two irrigation schedules </li>
+             <li>   If no fertilizer applications or irrigation schedules are made, 0 should be passed to all the fields associated with these variables </li>
+             <li>The app can provide misleading results when irrational values (for example, 10 for pH field) are provided to the fields </li>
+
+         </ol>
+
+
+     </div>
+
+     <h1>Predict Cotton Yield</h1>
+     <div class="middle" >
+
+
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="clay" placeholder="Clay %" required="required" />
+        <input type="text" name="silt" placeholder="Silt %" required="required" />
+		<input type="text" name="ph" placeholder="pH" required="required" />
+        <input type="text" name="Apr_Tavg" placeholder="Apr_Temp_Avg (C)" required="required" />
+        <input type="text" name="May_Tavg" placeholder="May_Temp_Avg (C)" required="required" />
+        <input type="text" name="Jun_Tavg" placeholder="Jun_Temp_Avg (C)" required="required" />
+        <input type="text" name="Apr_totl" placeholder="Apr_Rainfall_Total (mm)" required="required" />
+        <input type="text" name="May_totl" placeholder="May_Rainfall_Total (mm)" required="required" />
+        <input type="text" name="Jun_totl" placeholder="Jun_Rainfall_Total (mm)" required="required" />
+        <input type="text" name="Fert1" placeholder="Fert_First_App (kg)" required="required" />
+        <input type="text" name="Fert2" placeholder="Fert_Second_App (kg)" required="required" />
+        <input type="text" name="Fert1_DAP" placeholder="Fert_First_Days_After_Planting" required="required" />
+        <input type="text" name="Fert2_DAP" placeholder="Fert_Second_Days_After_Planting" required="required" />
+        <input type="text" name="Irri1" placeholder="Irri_First_App (mm)" required="required" />
+        <input type="text" name="Irri2" placeholder="Irri_Second_App (mm)" required="required" />
+        <input type="text" name="Irri1_DAP" placeholder="Irri_First_Days_After_Planting" required="required" />
+        <input type="text" name="Irri2_DAP" placeholder="Irri_Second_Days_After_Planting" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+         <!--{{ prediction_text }}-->
+
+    <br>
+    <br>
+    </div>
+
+    <div class="right">
+    <br>
+    <br>
+        <h1 style="font-size:2vw;color:white">{{prediction_text}}</h1>
+         <h1 style="font-size:3vw; color:green">{{prediction_val}}</h1>
+
+    </div>
+ </div>
+
+
+</body>
+</html>
